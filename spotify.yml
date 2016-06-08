@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: add spotify key
+      apt_key: keyserver='keyserver.ubuntu.com' id='BBEBDCB318AD50EC6865090613B00F1FD2C19886' state=present
+      
+    - name: add spotify apt repository
+      apt_repository: repo='deb http://repository.spotify.com stable non-free' state=present filename='spotify'
+
+    - name: install spotify-client
+      apt: pkg=spotify-client state=installed update_cache=true

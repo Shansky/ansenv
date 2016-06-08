@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Install basic packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - gcc
+        - g++
+        - make
+        - autconf
+        - automake
+        - pkg-config
+        - bash-utils

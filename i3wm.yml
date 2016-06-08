@@ -1,0 +1,44 @@
+---
+- hosts: all
+  tasks:
+    - name: Install i3wm
+      apt: pkg=i3 state=installed update_cache=true
+
+    - name: Install i3blocks
+      apt: pkg=i3blocks state=installed update_cache=true
+
+    - name: Create i3 config file
+      copy: src=files/i3wm/i3/config dest=/etc/i3/config mode=0644
+      # notify:
+      #   - restart i3wm
+
+    - name: Create i3 user directory
+      file: path=/home/mati/.i3 state=directory owner=mati group=mati mode=0775
+
+    - name: Create i3 user config
+      copy: src=files/i3wm/i3/user.config dest=/home/mati/.i3/config mode=0644
+      # notify:
+      #   - restart i3wm
+
+    - name: Create i3blocks config file
+      copy: src=files/i3wm/i3blocks/i3blocks.conf dest=/etc/i3blocks.conf mode=0644
+      # notify:
+      #   - restart i3wm
+
+    - name: Install rofi dependencies
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - libxinerama1
+        - libxinerama-dev
+        - libpango-1.0-0
+        - libpango1.0-dev
+        - libstartup-notification0-dev
+
+    - name: Get rofi source code
+    
+    - name: Install clipit
+      apt: pkg=clipit state=installed update_cache=true
+
+  handlers:
+    - name: Restart i3wm
+      shell: i3-msg restart

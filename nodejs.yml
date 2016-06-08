@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: add nodesource_6 key
+      apt_key: url='https://deb.nodesource.com/gpgkey/nodesource.gpg.key' state=present
+      
+    - name: add nodesource_6 apt repository
+      apt_repository: repo='deb https://deb.nodesource.com/node_6.x {{ ansible_distribution_release }} main' state=present filename='nodesource_6'
+
+    - name: install nodejs
+      apt: pkg=nodejs state=installed update_cache=true

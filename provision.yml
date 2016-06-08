@@ -1,0 +1,18 @@
+---
+- name: provision meta-playbook
+  hosts: all
+
+- name: running apt_repositories playbook
+  include: apt_repositories.yml
+
+- name: running packages playbook
+  include: packages.yml
+
+- name: running nodejs playbook
+  include: nodejs.yml
+
+- name: running i3wm playbook
+  include: i3wm.yml
+
+- name: running spotify playbook
+  include: spotify.yml
