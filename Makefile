@@ -8,4 +8,7 @@ ansiblepackage:
 	apt-get install -y ansible
 
 provision:
-	ansible-playbook -i "localhost," -c local provision.yml
+	ansible-playbook -i "localhost," -c local playbooks/provision.yml
+
+debug:
+	ansible-playbook -i "localhost," -c local playbooks/provision.yml -vvv

@@ -22,8 +22,8 @@
     # - name: add mozilla ppa repository
     #   apt_repository: repo='ppa:ubuntu-mozilla-daily/ppa ' state=present filename='mozilla'
 
-    - name: add ubuntu-wine ppa repository
-      apt_repository: repo='ppa:ubuntu-wine/ppa ' state=present filename='ubuntu-wine'
+    # - name: add ubuntu-wine ppa repository
+    #   apt_repository: repo='ppa:ubuntu-wine/ppa ' state=present filename='ubuntu-wine'
 
     - name: add numix-theme ppa repository
       apt_repository: repo='ppa:numix/ppa' state=present filename='numix'

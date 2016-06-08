@@ -34,7 +34,7 @@
         - libpango1.0-dev
         - libstartup-notification0-dev
 
-    - name: Get rofi source code
+    # - name: Get rofi source code
     
     - name: Install clipit
       apt: pkg=clipit state=installed update_cache=true
