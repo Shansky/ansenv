@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+  - name: Check if my_package is installed
+    command: dpkg-query -W my_package
+    register: my_package_check_deb
+    failed_when: my_package_check_deb.rc > 1
+    changed_when: my_package_check_deb.rc == 1
+
+  - name: Download my_package
+    get_url: 
+      url="https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb"
+      dest="/home/mati/Downloads/vagrant.deb"
+    when: vagrant_check_deb.rc == 1
+
+  - name: Install my_package
+    apt: deb="/home/mati/Downloads/vagrant.deb"
+#    sudo: true
+    when: vagrant_check_deb.rc == 1
