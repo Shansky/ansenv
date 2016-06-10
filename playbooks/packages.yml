@@ -6,9 +6,160 @@
       with_items:
         - gcc
         - g++
+        - gdb
         - make
         - autoconf
         - automake
         - pkg-config
+        - git
+        - mercurial
+        - patch
+        - patchutils
         - bash-builtins
         - bash-completion
+        - bashdb
+        - bc
+        - bsdutils
+        - command-not-found
+        - consolekit
+        - curl
+        - wget
+        - debianutils
+        - debootstrap
+        - diffutils
+        - fish
+        - zsh
+        - zshdb
+        - gdm
+        - gnupg
+        - gnupg2
+        - pm-utils
+        - usbutils
+        - sysstat
+
+    - name: Install bluetooth packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - bluez
+
+    - name: Install monitoring and debbugin packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - atop
+        - htop
+        - iotop
+        - dstat
+        - nload
+        - nmap
+        - strace
+        - tcpdump
+        - vnstat
+
+    - name: Install graphics packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - blender
+        - gimp
+
+    - name: Install misc packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - bison
+        - bleachbit
+        - cabextract
+        - docker-engine
+        - dropbox
+        - dunst
+        - fakeroot
+        - fbreader
+        - faenza-icon-theme
+        - ffmpeg
+        - file-roller
+        - flashplugin-installer
+        - fontconfig
+        - gparted
+        - groff
+        - gtk-chtheme
+        - how-can-i-help
+        - ipcalc
+        - keepassx
+        - lsof
+        - ltrace
+        - lxc
+        - maven
+        - minidlna
+        - mlocate
+        - mplayer
+        - myspell-pl
+        - needrestart
+        - net-tools
+        - netcat-openbsd
+        - okular
+        - oracle-java8-installer
+        - p7zip
+        - pandoc
+        - pavucontrol
+        # - pepperflashplugin-nonfree
+        - pipelight
+        - playonlinux
+        - poedit
+        - pulseaudio-equalizer
+        - pulseaudio-utils
+        - pv
+        - pwgen
+        - qnapi
+        - rake
+        - rsync
+        - rtkit
+        - screen
+        - scrot
+        - seahorse
+        - sed
+        - skype
+        - smplayer
+        - smplayer-themes
+        - smplayer-skins
+        - smtube
+        - snapd
+        - solaar # move
+        - sqlite3
+        - sshpass
+        - steam
+        - stow
+        - suckless-tools
+        - sudo
+        - swh-plugins
+        - texlive
+        - tmux
+        - virtualbox
+        - virtualenv
+        - vlc
+        - wine
+        - xsane
+
+    - name: Install browsers packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - chromium-browser
+        - firefox
+        - google-chrome-stable
+
+    - name: Install platforms packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - python
+        - python3
+        - ruby
+        - haskell-platform
+        - elixir
+
+### move to other playbook
+    - name: Install editor packages
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+        - emacs-nox
+        - emacs
+        - vim
+        - atom
+        - sublime-text-installer
+        - subtitleeditor
